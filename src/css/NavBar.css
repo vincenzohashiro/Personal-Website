@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Beautiful Police Officer';
+  src: url('../assets/fonts/BeautifulPoliceOfficer-rvv8x.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Beautiful Police Officer";
+  src: url("../assets/fonts/BeautifulPoliceOfficer.ttf") format("truetype");
+}
+
+.custom-navbar {
+  background-color: #0D0208 !important;
+  height: 5rem;
+}
+
+.brand-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  
+}
+
+
+.brand-text {
+  width: 150px;
+  height: 50px;
+  margin-left: 1.5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: "Beautiful Police Officer", sans-serif;
+  color: #008f11;
+  display: inline-block;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Beautiful Police Officer", sans-serif;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+  color: #008F11;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #00ff41;
+  background-color: transparent;
+}
+
+.navbar-search input {
+  border-radius: 5px;
+}
+
+.navbar-search button {
+  margin-left: 0.5rem;
+}
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between input and button */
+  
+}
+
+.navbar-search-input {
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #00ff41; /* green border */
+  font-size: 1rem;
+  background-color: transparent; /* makes it transparent */
+  color: #00ff41; /* green text */
+}
+
+.navbar-search-input::placeholder {
+  color: rgba(0, 255, 65, 0.6); /* semi-transparent green placeholder */
+}
+
+.navbar-search-input:focus {
+  outline: none;
+  border-color: #00ff41;
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
+  background-color: rgba(0, 0, 0, 0.3); /* slight dark tint on focus */
+}
+.navbar-search-btn {
+  background-color: transparent;
+  color: #00ff41;
+  border: 1px solid #00ff41;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-search-btn:hover {
+  background-color: #00ff41;
+  color: #000;
+}
+
+.fade-text {
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

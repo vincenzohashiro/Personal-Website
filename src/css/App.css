@@ -1,15 +1,50 @@
-
-.body {
-  margin: 0;
-  overflow-y: auto !important;
-  height: 1500px;
-  padding: 0;
-  background-color: #f8f9fa;
+@font-face {
+  font-family: 'Beautiful Police Officer';
+  src: url('./assets/fonts/BeautifulPoliceOfficer.ttf') format('truetype');
 }
+
+/* If you imported the font in TSX */
+@font-face {
+  font-family: 'Beautiful Police Officer';
+  src: url(${BeautifulPoliceOfficer}) format('truetype');
+}
+
+.custom-font {
+  font-family: 'Beautiful Police Officer', sans-serif;
+}
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.Background-Container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page-container {
+  position: relative;
+  z-index: 1; /* keeps content above background */
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
+/* NOT USED ATM
 .animated-background {
-  background: linear-gradient(-45deg, black, red, violet, yellow);
+  background: linear-gradient(-45deg, #0D0208, #003B00, #008F11, #00FF41);
   background-size: 400% 400%;
-  animation: gradientBG 3s ease infinite;
+  animation: gradientBG 6s ease infinite;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,9 +65,11 @@
 .page-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; 
 }
 
 .content-wrap {
-  flex: 1; 
+  flex: 1;
+  padding-bottom: 300px; 
 }
+  */

@@ -30,6 +30,7 @@ export default function Footer() {
       <button type="button" className="btn">
         Contact
       </button>
+
       <p>
         © {new Date().getFullYear()} A systematic development for portfolio uses
       </p>

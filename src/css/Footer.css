@@ -1,10 +1,10 @@
 .footer {
-  position: fixed;
+    position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #222;
-  color: white;
+  background-color: #0D0208;
+  color: #008F11;
   text-align: center;
   padding: 15px 0;
   transition: transform 0.3s ease-in-out;
@@ -20,10 +20,11 @@
 }
 
 .btn {
-  margin: 0 5px;
+  margin: 0 10px;
+  margin-bottom: 10px;
   background-color: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #003B00;
+  color: #008F11;
   padding: 5px 10px;
   cursor: pointer;
 }
@@ -31,3 +32,4 @@
 .btn:hover {
   background-color: #555;
 }
+

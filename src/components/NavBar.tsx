@@ -1,26 +1,47 @@
+import "../css/NavBar.css";
+import React, { useState, useEffect } from "react";
+
 interface NavBarProps {
   brandName?: string;
   imageSrcPath?: string;
 }
 
-function NavBar({ brandName, imageSrcPath }: NavBarProps) {
+const texts = ["Jabolmaster", "サザシジス"];
+
+function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
+  const [displayText, setDisplayText] = useState("");
+  const [textIndex, setTextIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+
+  useEffect(() => {
+    const currentWord = texts[textIndex];
+
+    if (charIndex < currentWord.length) {
+      const timeout = setTimeout(() => {
+        setDisplayText((prev) => prev + currentWord[charIndex]);
+        setCharIndex((prev) => prev + 1);
+      }, 150);
+      return () => clearTimeout(timeout);
+    } else {
+      const pause = setTimeout(() => {
+        setDisplayText("");
+        setCharIndex(0);
+        setTextIndex((prev) => (prev + 1) % texts.length);
+      }, 2000);
+      return () => clearTimeout(pause);
+    }
+  }, [charIndex, textIndex]);
+
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand custom-brand" href="#">
           <img
             src={imageSrcPath}
-            width="30"
-            height="50"
-            className="d-inline-block align-center"
+            className="d-inline-block align-center brand-logo"
             alt=""
           />
-          <span
-            className="ms-3 fs-1 text-uppercase"
-            style={{ fontFamily: "Monofett" }}
-          >
-            {brandName}
-          </span>
+          <span className="brand-text typewriter">{displayText}</span>
         </a>
         <button
           className="navbar-toggler"
@@ -33,6 +54,7 @@ function NavBar({ brandName, imageSrcPath }: NavBarProps) {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
             <li className="nav-item active">
@@ -74,17 +96,14 @@ function NavBar({ brandName, imageSrcPath }: NavBarProps) {
               </div>
             </li>
           </ul>
-          <form className="d-flex my-2 my-lg-0">
+          <form className="navbar-search">
             <input
-              className="form-control me-sm-2"
+              className="navbar-search-input"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button
-              className="btn btn-outline-success my-2 my-sm-0"
-              type="submit"
-            >
+            <button className="navbar-search-btn" type="submit">
               Search
             </button>
           </form>
