@@ -11,13 +11,13 @@
 }
 
 .profile-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-20px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;

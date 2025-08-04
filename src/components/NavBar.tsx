@@ -36,13 +36,13 @@ function NavBar({ brandName, imageSrcPath }: NavBarProps) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
-                Home <span className="sr-only">(current)</span>
+              <a className="nav-link" href="App.tsx">
+                Home <span className="sr-only"></span>
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Link
+                Contact
               </a>
             </li>
             <li className="nav-item dropdown">
@@ -55,28 +55,23 @@ function NavBar({ brandName, imageSrcPath }: NavBarProps) {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                Dropdown
+                Projects
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="#">
-                  Sjad
+                  Arma
                 </a>
                 <a className="dropdown-item" href="#">
-                  Gr
+                  Clothing Line
                 </a>
                 <div className="dropdown-divider"></div>
                 <a className="dropdown-item" href="#">
-                  Idk
+                  Flutter Designs
                 </a>
                 <a className="dropdown-item" href="#">
-                  Bilat
+                  Further Projects
                 </a>
               </div>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" href="#">
-                Me bomboclat
-              </a>
             </li>
           </ul>
           <form className="d-flex my-2 my-lg-0">
