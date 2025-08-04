@@ -1,35 +1,24 @@
 .footer {
-    position: fixed;
-  left: 0;
+  position: fixed;       /* stays visible */
   bottom: 0;
+  left: 0;
   width: 100%;
-  background-color: #0D0208;
-  color: #008F11;
+  background-color: #0D0208; 
+  color: #0f0;
   text-align: center;
   padding: 15px 0;
-  transition: transform 0.3s ease-in-out;
-  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 100;
 }
 
-.footer.hide {
-  transform: translateY(100%);
-}
-
-.footer.show {
-  transform: translateY(0);
-}
-
-.btn {
+.footer .btn {
   margin: 0 10px;
-  margin-bottom: 10px;
-  background-color: transparent;
-  border: 1px solid #003B00;
-  color: #008F11;
-  padding: 5px 10px;
-  cursor: pointer;
+  background: transparent;
+  border: 1px solid #0f0;
+  color: #0f0;
 }
 
-.btn:hover {
-  background-color: #555;
+.footer .btn:hover {
+  background-color: #0f0;
+  color: black;
 }
-

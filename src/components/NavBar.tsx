@@ -33,7 +33,7 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
   }, [charIndex, textIndex]);
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand custom-brand" href="#">
           <img
@@ -56,7 +56,7 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto">
+          <ul className="navbar-nav me-auto flex-column flex-sm-row justify-content-center align-items-center">
             <li className="nav-item active">
               <a className="nav-link" href="App.tsx">
                 Home <span className="sr-only"></span>

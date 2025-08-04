@@ -11,7 +11,7 @@ export default function MatrixBackground() {
     if (!ctx) return;
 
     const setCanvasSize = () => {
-      if (!canvas) return; // ✅ check here too
+      if (!canvas) return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };

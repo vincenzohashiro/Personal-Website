@@ -1,0 +1,95 @@
+.start-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: transparent;
+  color: #0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  transition: opacity 1s ease-in-out;
+}
+
+.intro {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.intro-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  color: #0f0;
+  font-family: 'Beautiful Police Officer', sans-serif;
+  padding: 20px;
+  
+  letter-spacing: 6px;   /* ✅ Adds spacing between letters */
+  white-space: nowrap;
+  border-right: 2px solid #0f0; /* cursor effect */
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 50% { border-color: #0f0; }
+  51%, 100% { border-color: transparent; }
+}
+
+
+@keyframes matrixFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+    color: #00ff99;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    color: #0f0;
+  }
+}
+
+.start-btn {
+  background-color: transparent;
+  border: 2px solid #0f0;
+  color: #0f0;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-family: 'Beautiful Police Officer', sans-serif;
+  border-radius: 20px;
+}
+
+.start-btn:hover {
+  background-color: #0f0;
+  color: black;
+  box-shadow: 0 0 15px #0f0;
+}
+
+.start-container.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cards-container {
+  padding-top: 100px; 
+  min-height: 150vh;  
+  opacity: 0;
+  animation: fadeInCards 1s forwards;
+  background: transparent;
+}
+
+@keyframes fadeInCards {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
