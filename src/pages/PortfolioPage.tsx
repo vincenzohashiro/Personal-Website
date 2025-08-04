@@ -3,22 +3,33 @@ import BasicCard from "../components/ProfileCard";
 import Footer from "../components/Footer";
 import imagePath from "../assets/6.jpeg";
 import MatrixBackground from "../components/Background";
+import "../css/PortfolioPage.css";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function PortfolioPage() {
-  return (
-    <>
-      {/* ✅ Background */}
-      <MatrixBackground />
+  const location = useLocation();
+  const shouldFadeIn = location.state?.fadeIn;
+  const [showContent, setShowContent] = useState(!shouldFadeIn);
 
-      <div className="Background-Container">
-        <div className="page-container">
-          <NavBar brandName="Jabolmaster" imageSrcPath={imagePath} />
-          <div className="content-wrap">
+  useEffect(() => {
+    if (shouldFadeIn) {
+      setTimeout(() => setShowContent(true), 200);
+    }
+  }, [shouldFadeIn]);
+
+  return (
+    <div className="Background-Container">
+      <MatrixBackground />
+      <div className={`page-container ${shouldFadeIn ? "fade-in" : ""}`}>
+        <NavBar brandName="Jabolmaster" imageSrcPath={imagePath} />
+        {showContent && (
+          <div className="content-wrap matrix-reveal">
             <BasicCard />
           </div>
-          <Footer />
-        </div>
+        )}
+        <Footer />
       </div>
-    </>
+    </div>
   );
 }
