@@ -11,6 +11,15 @@
   z-index: 100;
 }
 
+.footer-text {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #00ff41; /* green text */
+  font-family: 'Beautiful Police Officer', sans-serif;
+  word-spacing: 2px;
+  letter-spacing: 2px;
+}
+
 .footer .btn {
   margin: 0 10px;
   background: transparent;
