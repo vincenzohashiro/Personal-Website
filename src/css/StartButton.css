@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background: transparent;
   color: #0f0;
@@ -17,27 +18,38 @@
 .intro {
   text-align: center;
   background: rgba(0, 0, 0, 0.4);
-  padding: 20px;
-  border-radius: 50px;
+  padding: 5vw 4vw; /* Responsive padding */
+  border-radius: 30px;
+  max-width: 90%; /* ✅ Keeps it inside the screen */
+  margin: 0 auto; /* ✅ Centers it horizontally */
+  box-sizing: border-box;
 }
 
 .intro-title {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 4vw, 2rem); /* ✅ Responsive text size */
   margin-bottom: 20px;
   display: inline-block;
   color: #0f0;
   font-family: 'Beautiful Police Officer', sans-serif;
-  padding: 20px;
-  
-  letter-spacing: 6px;   /* ✅ Adds spacing between letters */
+  padding: 10px;
+  letter-spacing: 3px; /* Reduced spacing for smaller screens */
   white-space: nowrap;
   border-right: 2px solid #0f0; /* cursor effect */
   animation: blinkCursor 0.8s infinite;
 }
 
 @keyframes blinkCursor {
-  0%, 50% { border-color: #0f0; }
-  51%, 100% { border-color: transparent; }
+  0% { border-color: transparent; }
+  50% { border-color: #0f0; }
+  100% { border-color: transparent; }
+}
+
+/* Extra tweak for very small screens */
+@media (max-width: 400px) {
+  .intro-title {
+    letter-spacing: 1px;
+    white-space: normal; /* ✅ Allows wrapping if needed */
+  }
 }
 
 

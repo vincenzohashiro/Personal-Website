@@ -26,7 +26,8 @@ body {
 
 .profile-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.7), 
+              0 0 40px rgba(0, 255, 65, 0.5);
 }
 .profile-card::placeholder {
   color: rgba(0, 255, 65, 0.6); /* semi-transparent green placeholder */
@@ -84,11 +85,25 @@ body {
 .card {
   width: fit-content;
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #0D0208;
+  border: 1px solid #00ff41;
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
   overflow: hidden;
   max-width: none;
-  background-color: #0D0208;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.7), 
+              0 0 40px rgba(0, 255, 65, 0.5);
+}
+
+.card::placeholder {
+  color: rgba(0, 255, 65, 0.6); /* semi-transparent green placeholder */
+}
+
+
 
 .card-header {
   background: #0D0208;
@@ -101,7 +116,6 @@ body {
 
 .nav-pills .nav-link.active {
   color: #00ff41 !important;
- 
   background-color: transparent !important;
   border: 1px solid rgba(0, 255, 65, 0.6) !important;
   box-shadow: 
@@ -129,17 +143,23 @@ body {
 }
 
 .nav-pills .nav-item {
-  margin: 0 50px; /* Adds horizontal spacing between tabs */
+  margin: 0 12px; /* Adds horizontal spacing between tabs */
   margin-top: 10px;
 }
 .nav-pills .nav-link {
   padding: 10px 25px;
+  min-width: 120px; /* force equal width for all buttons */
+  text-align: center;
+  justify-content: center;
+
 }
 
 .card-body {
-  padding: 20px;
-  width: fit-content;
-  padding: 100px;
+ padding: 20px 30px;      /* Reduced padding for better fit */
+  width: 100%;             /* Ensure it uses available space */
+  max-width: 100%;         /* Prevents overflow */
+  box-sizing: border-box;  /* Includes padding in total width */
+  overflow-x: auto;  
 }
 
 .card-title {
@@ -173,3 +193,4 @@ body {
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+

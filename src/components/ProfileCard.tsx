@@ -27,10 +27,12 @@ export default function BasicCard() {
             justifyContent: "space-between",
             gap: "30px",
             flexWrap: "wrap",
+            flexDirection: "row",
           }}
+          className="education-container"
         >
           {/* Left Column */}
-          <div style={{ flex: 1, minWidth: "200px", padding: "20px" }}>
+          <div className="education-column">
             <p>
               <strong>Certifications and Educational Attainment</strong>
             </p>
@@ -43,14 +45,7 @@ export default function BasicCard() {
           </div>
 
           {/* Right Column */}
-          <div
-            style={{
-              flex: 1,
-              minWidth: "200px",
-              textAlign: "center",
-              padding: "20px",
-            }}
-          >
+          <div className="education-column text-center">
             <p>
               <strong>Attended Schools and Universities</strong>
             </p>
@@ -64,6 +59,7 @@ export default function BasicCard() {
       ),
       buttonText: "Explore Skills",
     },
+
     Skills: {
       title: "Skill Tab",
       content: (
