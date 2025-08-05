@@ -6,7 +6,7 @@ interface NavBarProps {
   imageSrcPath?: string;
 }
 
-const texts = ["Jabolmaster", "サザシジス"];
+const texts = ["Vincent", "サチエルピ", "Web Dev", "Portfolio"];
 
 function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
   const [displayText, setDisplayText] = useState("");
@@ -34,15 +34,20 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
 
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar fixed-top">
-      <div className="container-fluid">
-        <a className="navbar-brand custom-brand" href="#">
+      <div className="container-fluid ">
+        <div className="navbar-brand custom-brand">
           <img
             src={imageSrcPath}
             className="d-inline-block align-center brand-logo"
             alt=""
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
           />
           <span className="brand-text typewriter">{displayText}</span>
-        </a>
+        </div>
+
         <button
           className="navbar-toggler"
           type="button"

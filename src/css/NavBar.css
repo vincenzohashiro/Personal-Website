@@ -1,37 +1,35 @@
+
 @font-face {
   font-family: 'Beautiful Police Officer';
   src: url('../assets/fonts/BeautifulPoliceOfficer-rvv8x.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
-
 @font-face {
-  font-family: "Beautiful Police Officer";
-  src: url("../assets/fonts/BeautifulPoliceOfficer.ttf") format("truetype");
+  font-family: 'Matrix Code NFI';
+  src: url('../assets/fonts/MatrixCodeNfi-YPPj.otf') format('opentype');
 }
 
 .custom-navbar {
   background-color: #0D0208 !important;
   height: 5rem;
-  
+
 }
 
 .brand-logo {
   width: 50px;
-  height: 50px;
+  height: 70px;
   margin-right: 10px;
-  
 }
 
 
 .brand-text {
   width: 150px;
   height: 50px;
-  margin-left: 1.5rem;
+  margin-left: 0rem;
+  margin-right: 1rem;
   font-size: 2rem;
   text-transform: uppercase;
-  font-family: "Beautiful Police Officer", sans-serif;
+  font-family: "Matrix Code NFI", sans-serif;
   color: #008f11;
   display: inline-block;
   transition: opacity 0.5s ease-in-out;

@@ -1,7 +1,7 @@
 import NavBar from "../components/NavBar";
 import BasicCard from "../components/ProfileCard";
 import Footer from "../components/Footer";
-import imagePath from "../assets/6.jpeg";
+import imagePath from "../assets/skull.png";
 import MatrixBackground from "../components/Background";
 import "../css/PortfolioPage.css";
 import { useLocation } from "react-router-dom";

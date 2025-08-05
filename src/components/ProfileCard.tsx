@@ -1,19 +1,155 @@
 import "../css/ProfileCard.css";
 import profileImage from "../assets/qq.png";
 import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function BasicCard() {
   const [activeTab, setActiveTab] = useState("Profile");
   const [fadeClass, setFadeClass] = useState("fade-in");
+
+  const [openWorkIndices, setOpenWorkIndices] = useState<boolean[]>([]);
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+
+  const workExperiences = [
+    {
+      title: "Freelance Web and App Development (09/22 - 11/24) Philippines",
+      details: [
+        "Developed and maintained various web applications",
+        "Collaborated with clients to meet project requirements",
+        "Utilized modern web technologies for efficient solutions",
+      ],
+    },
+    {
+      title: "Junior Frontend Developer (01/21 - 08/22) TechCorp",
+      details: [
+        "Built reusable React components",
+        "Optimized UI for mobile and desktop",
+        "Worked with UX designers to improve usability",
+      ],
+    },
+    {
+      title: "Intern - Software Development (06/20 - 12/20) Startup Inc.",
+      details: [
+        "Assisted in developing backend APIs",
+        "Wrote documentation for project setup",
+        "Fixed minor bugs and improved code quality",
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    setOpenWorkIndices(new Array(workExperiences.length).fill(false));
+    setVisibleItems(new Array(workExperiences.length).fill(0));
+  }, []);
+
+  useEffect(() => {
+    openWorkIndices.forEach((isOpen, index) => {
+      if (
+        isOpen &&
+        visibleItems[index] < workExperiences[index].details.length
+      ) {
+        const timeout = setTimeout(() => {
+          setVisibleItems((prev) => {
+            const updated = [...prev];
+            updated[index] += 1;
+            return updated;
+          });
+        }, 400);
+
+        return () => clearTimeout(timeout);
+      }
+    });
+  }, [openWorkIndices, visibleItems]);
 
   const tabs = {
     Profile: {
       title: "Profile Tab",
       content: (
         <>
-          <p>
-            This is the detailed content for the <b>Profile</b> tab.
-          </p>
+          <div className="character-reference-container">
+            {/* Left Column */}
+            <div className="character-reference-column">
+              <p className="Tab-Title">
+                <strong>Character Reference</strong>
+              </p>
+              <ul className="matrix-list matrix-parent-list">
+                <li>
+                  <span className="matrix-title">Citizenship</span>
+                  <ul className="matrix-child-list">
+                    <li>Filipino</li>
+                  </ul>
+                </li>
+                <li>
+                  <span className="matrix-title">Email</span>
+                  <ul className="matrix-child-list">
+                    <li>Andrewbondad124@gmail.com</li>
+                  </ul>
+                </li>
+                <li>
+                  <span className="matrix-title">Language</span>
+                  <ul className="matrix-child-list">
+                    <li>Filipino</li>
+                    <li>English</li>
+                  </ul>
+                </li>
+                <li>
+                  <span className="matrix-title">Status</span>
+                  <ul className="matrix-child-list">
+                    <li>Single</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            {/* Right Column */}
+            <div className="character-reference-column text-center">
+              <p className="Tab-Title">
+                <strong>Work Experience</strong>
+              </p>
+              <ul className="matrix-list">
+                {workExperiences.map((work, index) => (
+                  <li key={index}>
+                    <div
+                      className="Work-Titles"
+                      onClick={() => {
+                        const updatedOpen = [...openWorkIndices];
+                        const updatedVisible = [...visibleItems];
+                        const nextState = !updatedOpen[index];
+
+                        updatedOpen[index] = nextState;
+                        if (nextState) {
+                          updatedVisible[index] = 0; // restart typing
+                        }
+
+                        setOpenWorkIndices(updatedOpen);
+                        setVisibleItems(updatedVisible);
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {work.title}
+                    </div>
+
+                    <AnimatePresence>
+                      {openWorkIndices[index] && (
+                        <motion.ul
+                          className="matrix-list"
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                        >
+                          {work.details
+                            .slice(0, visibleItems[index])
+                            .map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </>
       ),
       buttonText: "Explore Profile",
@@ -36,7 +172,7 @@ export default function BasicCard() {
             <p>
               <strong>Certifications and Educational Attainment</strong>
             </p>
-            <ul>
+            <ul className="matrix-list">
               <li>High School Diploma</li>
               <li>Senior Highschool Diploma (ICT STRAND)</li>
               <li>Completed Coursework in Information Technology</li>
@@ -49,10 +185,11 @@ export default function BasicCard() {
             <p>
               <strong>Attended Schools and Universities</strong>
             </p>
-            <ul>
-              <li>Blessed School of Salitran</li>
-              <li>STI College</li>
-              <li>National University Dasmarinas</li>
+            <ul className="matrix-list">
+              <li>High School Diploma</li>
+              <li>Senior Highschool Diploma (ICT STRAND)</li>
+              <li>Completed Coursework in Information Technology</li>
+              <li>Web and App Development Undergrad</li>
             </ul>
           </div>
         </div>

@@ -83,14 +83,26 @@ body {
 
 /* Card Section with Tabs */
 .card {
-  width: fit-content;
+  width: 100%;
+  max-width: 95%;      /* ✅ Ensures it never touches screen edges */
+  margin: 0 auto;       /* ✅ Centers it */
   border-radius: 16px;
   background-color: #0D0208;
   border: 1px solid #00ff41;
   box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
   overflow: hidden;
-  max-width: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+
+
+/* Prevent inner padding from overflowing */
+.card-body {
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
 }
 
 .card:hover {
@@ -102,7 +114,6 @@ body {
 .card::placeholder {
   color: rgba(0, 255, 65, 0.6); /* semi-transparent green placeholder */
 }
-
 
 
 .card-header {
@@ -155,7 +166,7 @@ body {
 }
 
 .card-body {
- padding: 20px 30px;      /* Reduced padding for better fit */
+  padding: 20px 30px;      /* Reduced padding for better fit */
   width: 100%;             /* Ensure it uses available space */
   max-width: 100%;         /* Prevents overflow */
   box-sizing: border-box;  /* Includes padding in total width */
@@ -171,7 +182,160 @@ body {
 .card-text {
   font-size: 1.5rem;
   color: #383838;
+  
 }
+
+.matrix-list,
+.matrix-list li {
+  list-style: none !important; /* Completely remove default bullet */
+  margin: 0;
+  padding: 0;
+  word-spacing: 3px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.matrix-list li {
+  position: relative;
+  padding-left: 25px; /* Space for custom bullet */
+  color: #00ff41;
+  font-family: monospace;
+}
+
+.matrix-list li::before {
+  content: ">";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ff41;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+  animation: matrixFlicker 1.5s infinite alternate;
+}
+
+.Work-Titles {
+  color: #0f0;
+  font-weight: bold;
+  text-shadow: 0 0 6px #00ff41;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.Work-Titles:hover {
+  color: #bfff00;
+}
+
+.matrix-list li::before {
+  content: ">";
+  color: #00ff41;
+  margin-right: 6px;
+}
+
+.matrix-parent-list > li {
+  margin-bottom: 15px;
+  list-style: none;
+}
+
+.matrix-title {
+  display: block;
+  font-weight: bold;
+  color: #00ff41;
+  font-size: 1.5rem;
+  text-shadow: 0 0 6px #00ff41, 0 0 12px #00ff41;
+  margin-bottom: 5px;
+  padding-left: 15px;
+  position: relative;
+}
+
+
+.matrix-child-list {
+  margin-left: 15px;
+  letter-spacing: 5px;
+   padding-left: 20px;
+}
+
+.matrix-child-list li {
+  color: #8dffb1;
+  font-size: 1.5rem;
+  list-style: none;
+  position: relative;
+  letter-spacing: 2px;
+  width: fit-content;
+  max-width: calc(100% - 20px); /* ✅ prevents overflow */
+  word-wrap: break-word;        /* ✅ wraps long text like emails */
+}
+
+.matrix-child-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #00ff41;
+  opacity: 0.7;
+
+}
+
+
+@keyframes matrixFlicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+
+
+.education-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  padding: 0 20px; /* ✅ adds space on both sides */
+}
+
+.education-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
+  color: #00ff41;
+  
+}
+
+/* Matrix glowing vertical line */
+.education-container::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  width: 2px;
+  background: #00ff41;
+  box-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+  transform: translateX(-50%);
+}
+
+/* Stack vertically on mobile and remove divider */
+@media (max-width: 768px) {
+  .education-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .education-container::before {
+    display: none;
+  }
+
+  .education-column {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+
 .tab-button {
   display: inline-block;
   background-color: #4a90e2;
@@ -194,3 +358,56 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+
+.character-reference-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  max-width: 100%;       /* Prevent horizontal overflow */
+  padding: 0 15px;       /* Add side padding for mobile */
+  box-sizing: border-box;
+}
+
+.character-reference-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 20px;
+  color: #00ff41;
+  box-sizing: border-box; /* Includes padding inside width */
+}
+
+/* Divider for large screens */
+.character-reference-container::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  left: 50%;
+  width: 2px;
+  background: #00ff41;
+  box-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+  transform: translateX(-50%);
+}
+
+/* Mobile view fix */
+@media (max-width: 768px) {
+  .character-reference-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;      /* Reduce padding on mobile */
+  }
+
+  .character-reference-container::before {
+    display: none;
+  }
+
+  .character-reference-column {
+    width: 100%;
+    max-width: 500px;
+  }
+}

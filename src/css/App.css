@@ -3,10 +3,9 @@
   src: url('./assets/fonts/BeautifulPoliceOfficer.ttf') format('truetype');
 }
 
-/* If you imported the font in TSX */
 @font-face {
-  font-family: 'Beautiful Police Officer';
-  src: url(${BeautifulPoliceOfficer}) format('truetype');
+  font-family: 'Matrix Code NFI';
+  src: url('../assets/fonts/MatrixCodeNfi-YPPj.otf') format('opentype');
 }
 
 .custom-font {
