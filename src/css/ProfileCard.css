@@ -245,13 +245,16 @@ body {
   margin-bottom: 5px;
   padding-left: 15px;
   position: relative;
+  
 }
 
 
 .matrix-child-list {
   margin-left: 15px;
   letter-spacing: 5px;
+  white-space: nowrap;
    padding-left: 20px;
+   
 }
 
 .matrix-child-list li {
@@ -294,22 +297,28 @@ body {
   flex-direction: row;
   position: relative;
   padding: 0 20px; /* ✅ adds space on both sides */
+   align-items: stretch;
 }
 
 .education-column {
-  flex: 1;
-  min-width: 200px;
-  padding: 20px;
+    flex: 1;
+  min-width: 250px;
+  padding: 20px 40px;
   color: #00ff41;
-  
+  box-sizing: border-box;
+
+  /* ✅ Ensures contents shrink rather than break into next column */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Matrix glowing vertical line */
 .education-container::before {
   content: "";
   position: absolute;
-  top: 10%;
-  bottom: 10%;
+  top: 0;              /* ✅ Start at top of container */
+  bottom: 0;           /* ✅ Automatically adjusts to tallest column */
   left: 50%;
   width: 2px;
   background: #00ff41;
@@ -370,6 +379,7 @@ body {
   max-width: 100%;       /* Prevent horizontal overflow */
   padding: 0 15px;       /* Add side padding for mobile */
   box-sizing: border-box;
+   align-items: stretch;
 }
 
 .character-reference-column {
@@ -377,15 +387,28 @@ body {
   min-width: 200px;
   padding: 20px;
   color: #00ff41;
-  box-sizing: border-box; /* Includes padding inside width */
+  box-sizing: border-box;
+  max-width: 100%;        /* ✅ Prevents overflow */
+  word-wrap: break-word;  /* ✅ Breaks long words if needed */
+  overflow-wrap: break-word;
+  white-space: normal;     /* ✅ Allows wrapping instead of spilling out */
 }
+
+/* Child list items (for emails or long text) */
+.character-reference-column .matrix-child-list li {
+  font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+  line-height: 1.4;
+  word-break: break-word; /* ✅ Forces text to stay inside */
+  white-space: normal;    /* ✅ Wraps onto next line */
+}
+
 
 /* Divider for large screens */
 .character-reference-container::before {
   content: "";
   position: absolute;
-  top: 10%;
-  bottom: 10%;
+  top: 0;              /* ✅ Start at top of container */
+  bottom: 0;  
   left: 50%;
   width: 2px;
   background: #00ff41;

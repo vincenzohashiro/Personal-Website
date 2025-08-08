@@ -103,7 +103,7 @@ export default function BasicCard() {
             {/* Right Column */}
             <div className="character-reference-column text-center">
               <p className="Tab-Title">
-                <strong>Work Experience</strong>
+                <strong>Work Experience (Click to expand)</strong>
               </p>
               <ul className="matrix-list">
                 {workExperiences.map((work, index) => (
@@ -235,7 +235,7 @@ export default function BasicCard() {
     <div className="container mt-5">
       <div className="profile-card">
         <img src={profileImage} alt="Profile" className="profile-image" />
-        <h2 className="profile-name">Jabol Master</h2>
+        <h2 className="profile-name">Vincent Mangalili</h2>
         <p className="profile-title">Frontend Developer</p>
         <p className="profile-description">
           I am committed to providing my expertise and knowledge, continuously
