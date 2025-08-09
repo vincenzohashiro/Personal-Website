@@ -8,6 +8,11 @@
   src: url('../assets/fonts/MatrixCodeNfi-YPPj.otf') format('opentype');
 }
 
+@font-face {
+  font-family: '3x5';
+  src: url('../assets/fonts/3X5-6OYA.ttf') format('truetype');
+}
+
 .custom-font {
   font-family: 'Beautiful Police Officer', sans-serif;
 }

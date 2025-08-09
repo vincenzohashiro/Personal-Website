@@ -2,14 +2,25 @@ import "../css/ProfileCard.css";
 import profileImage from "../assets/qq.png";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import TypingEffect from "./TypingEffect"; // Import the typing component
 
 export default function BasicCard() {
   const [activeTab, setActiveTab] = useState("Profile");
   const [fadeClass, setFadeClass] = useState("fade-in");
+  const [isMatrixMode, setIsMatrixMode] = useState(false);
 
+  // Your existing state
   const [openWorkIndices, setOpenWorkIndices] = useState<boolean[]>([]);
   const [visibleItems, setVisibleItems] = useState<number[]>([]);
 
+  // Matrix titles object (you already have this)
+  const MatrixTitles = {
+    Profile: { normal: "Profile", matrix: "Profile" },
+    Education: { normal: "Education", matrix: "Education" },
+    Skills: { normal: "Skills", matrix: "Skills" },
+  };
+
+  // Your existing work experiences array
   const workExperiences = [
     {
       title: "Freelance Web and App Development (09/22 - 11/24) Philippines",
@@ -36,7 +47,43 @@ export default function BasicCard() {
       ],
     },
   ];
+  const attendedSchools = [
+    {
+      title: "Blessed School of Salitran (06/18 - 04/21)",
+      details: [
+        "Honorary excellence in academics",
+        "Best in Research",
+        "Science and Technology Award",
+      ],
+    },
+    {
+      title: "STI College Cavite (06/21 - 04/23)",
+      details: [
+        "Best in Web Development",
+        "Best in Mobile App Development",
+        "Academic excellence award",
+      ],
+    },
+    {
+      title: "National University (06/23 - Present)",
+      details: [
+        "Software Engineering Student",
+        "Participated in hackathons",
+        "Internship in software development",
+      ],
+    },
+  ];
 
+  // Matrix mode switching (you already have this logic)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsMatrixMode((prev) => !prev);
+    }, 8000); // Switch every 10 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Your existing useEffects for work experiences
   useEffect(() => {
     setOpenWorkIndices(new Array(workExperiences.length).fill(false));
     setVisibleItems(new Array(workExperiences.length).fill(0));
@@ -61,9 +108,46 @@ export default function BasicCard() {
     });
   }, [openWorkIndices, visibleItems]);
 
+  useEffect(() => {
+    setOpenWorkIndices(new Array(attendedSchools.length).fill(false));
+    setVisibleItems(new Array(attendedSchools.length).fill(0));
+  }, []);
+  //for attended schools in education tab
+  useEffect(() => {
+    openWorkIndices.forEach((isOpen, index) => {
+      if (
+        isOpen &&
+        visibleItems[index] < attendedSchools[index].details.length
+      ) {
+        const timeout = setTimeout(() => {
+          setVisibleItems((prev) => {
+            const updated = [...prev];
+            updated[index] += 1;
+            return updated;
+          });
+        }, 400);
+
+        return () => clearTimeout(timeout);
+      }
+    });
+  }, [openWorkIndices, visibleItems]);
+
   const tabs = {
     Profile: {
-      title: "Profile Tab",
+      title: (
+        <span
+          className={isMatrixMode ? "matrix-title-font" : "normal-title-font"}
+        >
+          <TypingEffect
+            normalText={MatrixTitles.Profile.normal}
+            matrixText={MatrixTitles.Profile.matrix}
+            normalClassName="normal-title-font"
+            matrixClassName="matrix-title-font"
+            totalCycleDuration={8000}
+            showCursor
+          />
+        </span>
+      ),
       content: (
         <>
           <div className="character-reference-container">
@@ -117,7 +201,7 @@ export default function BasicCard() {
 
                         updatedOpen[index] = nextState;
                         if (nextState) {
-                          updatedVisible[index] = 0; // restart typing
+                          updatedVisible[index] = 0;
                         }
 
                         setOpenWorkIndices(updatedOpen);
@@ -155,7 +239,20 @@ export default function BasicCard() {
       buttonText: "Explore Profile",
     },
     Education: {
-      title: "Education Tab",
+      title: (
+        <span
+          className={isMatrixMode ? "matrix-title-font" : "normal-title-font"}
+        >
+          <TypingEffect
+            normalText={MatrixTitles.Education.normal}
+            matrixText={MatrixTitles.Education.matrix}
+            normalClassName="normal-title-font"
+            matrixClassName="matrix-title-font"
+            totalCycleDuration={8000}
+            showCursor
+          />
+        </span>
+      ),
       content: (
         <div
           style={{
@@ -169,7 +266,7 @@ export default function BasicCard() {
         >
           {/* Left Column */}
           <div className="education-column">
-            <p>
+            <p className="Tab-Title">
               <strong>Certifications and Educational Attainment</strong>
             </p>
             <ul className="matrix-list">
@@ -182,14 +279,51 @@ export default function BasicCard() {
 
           {/* Right Column */}
           <div className="education-column text-center">
-            <p>
+            <p className="Tab-Title">
               <strong>Attended Schools and Universities</strong>
             </p>
             <ul className="matrix-list">
-              <li>High School Diploma</li>
-              <li>Senior Highschool Diploma (ICT STRAND)</li>
-              <li>Completed Coursework in Information Technology</li>
-              <li>Web and App Development Undergrad</li>
+              {attendedSchools.map((work, index) => (
+                <li key={index}>
+                  <div
+                    className="Work-Titles"
+                    onClick={() => {
+                      const updatedOpen = [...openWorkIndices];
+                      const updatedVisible = [...visibleItems];
+                      const nextState = !updatedOpen[index];
+
+                      updatedOpen[index] = nextState;
+                      if (nextState) {
+                        updatedVisible[index] = 0;
+                      }
+
+                      setOpenWorkIndices(updatedOpen);
+                      setVisibleItems(updatedVisible);
+                    }}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {work.title}
+                  </div>
+
+                  <AnimatePresence>
+                    {openWorkIndices[index] && (
+                      <motion.ul
+                        className="matrix-list"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                      >
+                        {work.details
+                          .slice(0, visibleItems[index])
+                          .map((detail, i) => (
+                            <li key={i}>{detail}</li>
+                          ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -198,25 +332,80 @@ export default function BasicCard() {
     },
 
     Skills: {
-      title: "Skill Tab",
+      title: (
+        <span
+          className={isMatrixMode ? "matrix-title-font" : "normal-title-font"}
+        >
+          <TypingEffect
+            normalText={MatrixTitles.Skills.normal}
+            matrixText={MatrixTitles.Skills.matrix}
+            normalClassName="normal-title-font"
+            matrixClassName="matrix-title-font"
+            totalCycleDuration={8000}
+            showCursor
+          />
+        </span>
+      ),
       content: (
         <>
-          <p>
-            This is the detailed content for the <b>Skills</b> tab. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Quidem quos accusantium
-            magni quis. Explicabo quisquam et a magni, provident laboriosam
-            autem vero consequuntur illum excepturi repellendus beatae minus
-            nihil harum.
-          </p>
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Skills Example"
-            style={{
-              borderRadius: "8px",
-              marginTop: "10px",
-              paddingBottom: "30px",
-            }}
-          />
+          <div className="skills-container">
+            <div className="skills-column">
+              <p className="Tab-Title">
+                <strong>What I can do and have done</strong>
+              </p>
+
+              <ul className="skills-list">
+                {[
+                  {
+                    title: "Web and App Development",
+                    content:
+                      "Built responsive UIs and modular components using React, TypeScript, and modern tooling.",
+                  },
+                  {
+                    title: "Clerical and VA Experience",
+                    content:
+                      "Managed scheduling, emails, and document processing with professionalism and clarity.",
+                  },
+                  {
+                    title: "English Proficiency",
+                    content:
+                      "Strong written and verbal communication across technical and formal contexts.",
+                  },
+                  {
+                    title: "Hardware and Software",
+                    content:
+                      "Troubleshoots and optimizes systems across OS environments, productivity, and dev tools.",
+                  },
+                  {
+                    title: "Process Optimization",
+                    content:
+                      "Streamlined workflows, standardized communication formats, and clarified terminology.",
+                  },
+                  {
+                    title: "Team Communication",
+                    content:
+                      "Bridges technical depth with team clarity; develops glossaries and communication SOPs.",
+                  },
+                ].map((item, idx) => (
+                  <li key={idx} className="skill-item">
+                    <span className="skill-title">
+                      <span className="glow-icon">{">"}</span> {item.title}
+                    </span>
+                    <p className="skill-text">
+                      <span className="glow-icon">{">"}</span> {item.content}
+                    </p>
+                    <div className="skill-image-wrapper">
+                      <img
+                        src={profileImage}
+                        alt={`${item.title} visual`}
+                        className="skill-image"
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </>
       ),
       buttonText: "Explore Skills",
@@ -225,11 +414,20 @@ export default function BasicCard() {
 
   const currentTab = tabs[activeTab as keyof typeof tabs];
 
-  useEffect(() => {
-    setFadeClass("fade-out");
-    const timer = setTimeout(() => setFadeClass("fade-in"), 150);
-    return () => clearTimeout(timer);
-  }, [activeTab]);
+  <div className={`tab-content ${fadeClass}`}>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeTab}
+        initial={{ opacity: 0, filter: "hue-rotate(120deg)", scale: 1.02 }}
+        animate={{ opacity: 1, filter: "hue-rotate(0deg)", scale: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className="matrix-transition"
+      >
+        {currentTab.content}
+      </motion.div>
+    </AnimatePresence>
+  </div>;
 
   return (
     <div className="container mt-5">

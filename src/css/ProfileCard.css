@@ -16,7 +16,7 @@ body {
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  max-width: 350px;
+  max-width: 450px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #00ff41;
@@ -39,30 +39,33 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: #008F11 solid 2px;
 }
 
 .profile-name {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 5px;
   color: #00FF41;
-  font-family: 'Beautiful Police Officer', sans-serif;
+  font-family: '3x5', sans-serif;
   font-weight: bold;
   letter-spacing: 5px;
 }
 
 .profile-title {
   color: #008F11;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .profile-description {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #00FF41;
   margin-bottom: 15px;
+  font-weight: bolder;
+  font-family: monospace;
 }
 
 .profile-button {
@@ -177,6 +180,10 @@ body {
   font-size: 3rem;
   margin-bottom: 10px;
   color: #00FF41;
+  min-height: 60px; /* Fixed height to prevent jumping */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-text {
@@ -288,7 +295,6 @@ body {
 }
 
 
-
 .education-container {
   display: flex;
   justify-content: space-between;
@@ -344,6 +350,17 @@ body {
   }
 }
 
+.matrix-title-font {
+  font-family: "Matrix Code NFI", "Courier New", monospace !important;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+}
+
+.normal-title-font {
+  font-family: 'Beautiful Police Officer', 'Sansation', Arial, sans-serif !important;
+  color: #00FF41;
+  text-shadow: 0 0 6px #00ff41, 0 0 12px #00ff41;
+}
 
 .tab-button {
   display: inline-block;
@@ -353,6 +370,15 @@ body {
   border-radius: 8px;
   text-decoration: none;
   transition: background-color 0.3s ease;
+}
+
+.Tab-Title {
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-bottom: 10px;
+    font-family: monospace;
+  text-align: center;
+ padding: 20px;
 }
 
 .fade-in {
@@ -433,4 +459,102 @@ body {
     width: 100%;
     max-width: 500px;
   }
+}
+
+.skills-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-item {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed rgba(0, 255, 65, 0.25);
+}
+
+.skill-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #00ff41;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: '3x5', sans-serif;
+  letter-spacing: 3px;
+}
+
+.skill-text {
+  margin: 8px 0 12px;
+  font-size: 0.95rem;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+  
+}
+
+.glow-icon {
+  color: #00ff41;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+/* Framed image at bottom of each item */
+.skill-image-wrapper {
+  width: 100%;
+  max-width: 380px;
+  padding: 8px;
+  background-color: #0D0208;
+  border: 2px solid #00FF41;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.skill-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.skill-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .skill-image-wrapper {
+    margin: 0 auto;
+  }
+
+  .skill-title,
+  .skill-text {
+    justify-content: flex-start;
+    text-align: left;
+  }
+}
+
+@keyframes matrix-fade {
+  0% {
+    opacity: 0;
+    filter: hue-rotate(120deg) brightness(1.5);
+    transform: scale(1.02);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 20px #0f0;
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: scale(1);
+  }
+}
+
+.matrix-transition {
+  animation: matrix-fade 0.6s ease forwards;
 }
