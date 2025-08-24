@@ -3,6 +3,7 @@ import profileImage from "../assets/qq.png";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TypingEffect from "./TypingEffect"; // Import the typing component
+import CruzaderImg from "../assets/Cruzader.png";
 
 export default function BasicCard() {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -353,13 +354,13 @@ export default function BasicCard() {
               <p className="Tab-Title">
                 <strong>What I can do and have done</strong>
               </p>
-
               <ul className="skills-list">
                 {[
                   {
                     title: "Web and App Development",
                     content:
                       "Built responsive UIs and modular components using React, TypeScript, and modern tooling.",
+                    image: CruzaderImg,
                   },
                   {
                     title: "Clerical and VA Experience",
@@ -394,13 +395,17 @@ export default function BasicCard() {
                     <p className="skill-text">
                       <span className="glow-icon">{">"}</span> {item.content}
                     </p>
-                    <div className="skill-image-wrapper">
-                      <img
-                        src={profileImage}
-                        alt={`${item.title} visual`}
-                        className="skill-image"
-                      />
-                    </div>
+
+                    {/* ✅ Only render the image if one exists */}
+                    {item.image && (
+                      <div className="skill-image-wrapper">
+                        <img
+                          src={item.image}
+                          alt={`${item.title} visual`}
+                          className="skill-image"
+                        />
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
