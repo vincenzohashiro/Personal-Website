@@ -36,15 +36,7 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
     <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar fixed-top">
       <div className="container-fluid ">
         <div className="navbar-brand custom-brand">
-          <img
-            src={imageSrcPath}
-            className="d-inline-block align-center brand-logo"
-            alt=""
-            style={{
-              width: "50px",
-              height: "50px",
-            }}
-          />
+          <img src={imageSrcPath} className="brand-logo" alt="Logo" />
           <span className="brand-text typewriter">{displayText}</span>
         </div>
 
@@ -84,11 +76,32 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
               >
                 Projects
               </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="#">
+              <div
+                className="dropdown-menu custom-dropdown"
+                aria-labelledby="navbarDropdown"
+              >
+                <a
+                  className="dropdown-item"
+                  href="https://cruzader-tkd.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Cruzader-TKD Website
+                </a>
+                <a
+                  className="dropdown-item"
+                  href="https://arma-ph.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Arma
                 </a>
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  href="https://joballmaster.github.io/Website-Portfolio/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Clothing Line
                 </a>
                 <div className="dropdown-divider"></div>

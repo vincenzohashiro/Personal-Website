@@ -68,20 +68,31 @@ body {
   font-family: monospace;
 }
 
-.profile-button {
-  background-color: #4a90e2;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  cursor: pointer;
+.resume-link {
+  color: #007bff;
+  font-weight: 600;
+  font-size: 1.3rem;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  margin-left: 4px;
+  padding: 15px 15px;
+  transition: color 0.3s ease;
+    text-decoration: underline;
 }
 
-.profile-button:hover {
-  background-color: #357ab8;
+.resume-link:hover {
+  text-decoration: underline;
+    color: #00ff41 !important;
+  border: 1px solid rgba(0, 255, 65, 0.4) !important;
+  border-radius: 50px;
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
+}
+
+
+
+.tab-button:hover {
+  color: #00ff41 !important;
+  border: 1px solid rgba(0, 255, 65, 0.4) !important;
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.4);
 }
 
 /* Card Section with Tabs */
@@ -364,12 +375,18 @@ body {
 
 .tab-button {
   display: inline-block;
-  background-color: #4a90e2;
-  color: #fff;
+  background: #0D0208;
+  font-family: monospace;
   padding: 10px 20px;
   border-radius: 8px;
+  font-size: 2rem;
   text-decoration: none;
   transition: background-color 0.3s ease;
+    
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .Tab-Title {

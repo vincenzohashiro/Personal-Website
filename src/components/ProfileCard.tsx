@@ -1,5 +1,5 @@
 import "../css/ProfileCard.css";
-import profileImage from "../assets/qq.png";
+import profileImage from "../assets/ew.jpg";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TypingEffect from "./TypingEffect"; // Import the typing component
@@ -357,15 +357,20 @@ export default function BasicCard() {
               <ul className="skills-list">
                 {[
                   {
-                    title: "Web and App Development",
+                    title: "Full Stack Web Development",
                     content:
-                      "Built responsive UIs and modular components using React, TypeScript, and modern tooling.",
+                      "Built responsive websites and modular components using React, TypeScript, and modern tooling.",
                     image: CruzaderImg,
                   },
                   {
-                    title: "Clerical and VA Experience",
+                    title: "Clerical and VA Support",
                     content:
                       "Managed scheduling, emails, and document processing with professionalism and clarity.",
+                  },
+                  {
+                    title: "Automation Specialist",
+                    content:
+                      "Created a CRM system using Zapier and Monday to streamline client management and follow-ups.",
                   },
                   {
                     title: "English Proficiency",
@@ -443,9 +448,20 @@ export default function BasicCard() {
         <p className="profile-description">
           I am committed to providing my expertise and knowledge, continuously
           studying and staying upto-date with the latest advancements in my
-          field to ensure that all work is performed at the highest standard
+          field to ensure that all work is performed at the highest standard.
+          <br />
+          <br />
+          <a
+            href={`${
+              import.meta.env.BASE_URL
+            }files/Vincent_Mangalili_ATS_Resume.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="resume-link"
+          >
+            View Resume
+          </a>
         </p>
-        <button className="profile-button">View Profile</button>
       </div>
       <div className="card text-center profile-card">
         <div className="card-header">

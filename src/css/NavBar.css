@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Beautiful Police Officer';
   src: url('../assets/fonts/BeautifulPoliceOfficer-rvv8x.ttf') format('truetype');
@@ -9,77 +8,81 @@
   src: url('../assets/fonts/MatrixCodeNfi-YPPj.otf') format('opentype');
 }
 
+/* Navbar */
 .custom-navbar {
   background-color: #0D0208 !important;
   height: 5rem;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.4);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+}
 
+.custom-brand {
+  display: flex;
+  align-items: center;   /* vertical alignment */
+  gap: 10px;             /* space between logo and text */
 }
 
 .brand-logo {
   width: 50px;
-  height: 70px;
-  margin-right: 10px;
+  height: 50px;
+  object-fit: contain;   /* keeps logo proportional */
+  display: block;
 }
 
-
 .brand-text {
-  width: 150px;
-  height: 50px;
-  margin-left: 0rem;
-  margin-right: 1rem;
+  display: flex;
+  align-items: center;   /* centers text with logo */
+  height: 50px;          /* matches logo height */
+  overflow: hidden;
+  white-space: nowrap;
+  width: 160px;          /* fixed width to prevent navbar shifting */
   font-size: 2rem;
   text-transform: uppercase;
   font-family: "Matrix Code NFI", sans-serif;
-  color: #008f11;
-  display: inline-block;
-  transition: opacity 0.5s ease-in-out;
+  color: #00ff41;
 }
 
+
+/* Nav Links */
 .navbar-nav .nav-link {
   font-family: "Beautiful Police Officer", sans-serif;
   font-size: 1.5rem;
   transition: color 0.3s;
-  color: #008F11;
+  color: #00ff41;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #00ff41;
-  background-color: transparent;
+  color: #00ff90;
+  text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41;
 }
 
-.navbar-search input {
-  border-radius: 5px;
-}
-
-.navbar-search button {
-  margin-left: 0.5rem;
-}
+/* Search */
 .navbar-search {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* space between input and button */
-  
+  gap: 0.5rem;
 }
 
 .navbar-search-input {
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
-  border: 1px solid #00ff41; /* green border */
+  border: 1px solid #00ff41;
   font-size: 1rem;
-  background-color: transparent; /* makes it transparent */
-  color: #00ff41; /* green text */
+  background-color: transparent;
+  color: #00ff41;
 }
 
 .navbar-search-input::placeholder {
-  color: rgba(0, 255, 65, 0.6); /* semi-transparent green placeholder */
+  color: rgba(0, 255, 65, 0.6);
 }
 
 .navbar-search-input:focus {
   outline: none;
   border-color: #00ff41;
   box-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
-  background-color: rgba(0, 0, 0, 0.3); /* slight dark tint on focus */
+  background-color: rgba(0, 0, 0, 0.3);
 }
+
 .navbar-search-btn {
   background-color: transparent;
   color: #00ff41;
@@ -95,33 +98,121 @@
   color: #000;
 }
 
+/* Mobile Nav */
 .navbar-collapse.show {
-    position: fixed;
-    top: 60px; /* below the navbar */
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* matrix-style */
-    padding: 1rem;
-    flex-direction: column;
-    padding: 20px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  padding: 1rem 20px;
+  flex-direction: column;
 }
 
+/* Matrix Dropdown */
+.custom-dropdown {
+  background-color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Matrix background */
+.custom-dropdown::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(0deg, rgba(0, 255, 70, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 70, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: matrix-scroll 6s linear infinite;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+@keyframes matrix-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(20px); }
+}
+
+/* Scanline overlay */
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 70, 0.05) 0px,
+    rgba(0, 255, 70, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Items */
+.custom-dropdown .dropdown-item {
+  position: relative;
+  z-index: 2;
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: #00ff41;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background: rgba(0, 255, 65, 0.1);
+  color: #00ff41;
+  text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41;
+  animation: glitch 0.3s steps(2, end);
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Divider */
+.custom-dropdown .dropdown-divider {
+  border-top: 1px solid rgba(0, 255, 65, 0.4);
+  margin: 8px 0;
+  z-index: 2;
+  position: relative;
+}
+
+/* Responsive Nav */
 @media (max-width: 768px) {
   .navbar-nav {
     flex-direction: column !important;
-    align-items: flex-start; /* or center */
+    align-items: flex-start;
   }
 }
 
+/* Fade text for Matrix "flicker" */
 .fade-text {
   animation: fadeInOut 3s infinite;
 }
 
 @keyframes fadeInOut {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
