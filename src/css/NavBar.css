@@ -216,3 +216,8 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+.navbar-nav .nav-link.active {
+  color: #00ff90;
+  text-shadow: 0 0 8px #00ff41, 0 0 15px #00ff41;
+}

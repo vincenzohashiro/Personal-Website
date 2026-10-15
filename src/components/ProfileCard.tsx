@@ -1,5 +1,4 @@
 import "../css/ProfileCard.css";
-import profileImage from "../assets/ew.jpg";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TypingEffect from "./TypingEffect"; // Import the typing component
@@ -442,7 +441,6 @@ export default function BasicCard() {
   return (
     <div className="container mt-5">
       <div className="profile-card">
-        <img src={profileImage} alt="Profile" className="profile-image" />
         <h2 className="profile-name">Vincent Mangalili</h2>
         <p className="profile-title">Frontend Developer</p>
         <p className="profile-description">

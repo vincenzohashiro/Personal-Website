@@ -1,5 +1,6 @@
 import "../css/NavBar.css";
 import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 interface NavBarProps {
   brandName?: string;
@@ -8,10 +9,24 @@ interface NavBarProps {
 
 const texts = ["Vincent", "サチエルピ", "Web Dev", "Portfolio"];
 
+const navLinks = [
+  { to: "/portfolio", label: "Home" },
+  { to: "/projects", label: "Projects" },
+  { to: "/contact", label: "Contact" },
+];
+
 function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
   const [displayText, setDisplayText] = useState("");
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    navigate(q ? `/projects?q=${encodeURIComponent(q)}` : "/projects");
+  };
 
   useEffect(() => {
     const currentWord = texts[textIndex];
@@ -35,10 +50,10 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow custom-navbar fixed-top">
       <div className="container-fluid ">
-        <div className="navbar-brand custom-brand">
+        <Link to="/" className="navbar-brand custom-brand">
           <img src={imageSrcPath} className="brand-logo" alt="Logo" />
           <span className="brand-text typewriter">{displayText}</span>
-        </div>
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -54,72 +69,25 @@ function NavBar({ brandName = "Jabolmaster", imageSrcPath }: NavBarProps) {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto flex-column flex-sm-row justify-content-center align-items-center">
-            <li className="nav-item active">
-              <a className="nav-link" href="App.tsx">
-                Home <span className="sr-only"></span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Contact
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Projects
-              </a>
-              <div
-                className="dropdown-menu custom-dropdown"
-                aria-labelledby="navbarDropdown"
-              >
-                <a
-                  className="dropdown-item"
-                  href="https://cruzader-tkd.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            {navLinks.map((link) => (
+              <li className="nav-item" key={link.to}>
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
                 >
-                  Cruzader-TKD Website
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="https://arma-ph.net"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Arma
-                </a>
-                <a
-                  className="dropdown-item"
-                  href="https://joballmaster.github.io/Website-Portfolio/index.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Clothing Line
-                </a>
-                <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">
-                  Flutter Designs
-                </a>
-                <a className="dropdown-item" href="#">
-                  Further Projects
-                </a>
-              </div>
-            </li>
+                  {link.label}
+                </NavLink>
+              </li>
+            ))}
           </ul>
-          <form className="navbar-search">
+          <form className="navbar-search" role="search" onSubmit={handleSearch}>
             <input
               className="navbar-search-input"
               type="search"
-              placeholder="Search"
-              aria-label="Search"
+              placeholder="Search projects"
+              aria-label="Search projects"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
             <button className="navbar-search-btn" type="submit">
               Search

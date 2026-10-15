@@ -1,18 +1,18 @@
 import "../css/Footer.css";
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <button type="button" className="btn">
+      <Link to="/portfolio" className="btn">
         Home
-      </button>
-      <button type="button" className="btn">
+      </Link>
+      <Link to="/projects" className="btn">
         Projects
-      </button>
-      <button type="button" className="btn">
+      </Link>
+      <Link to="/contact" className="btn">
         Contact
-      </button>
+      </Link>
       <p className="footer-text">
         © {new Date().getFullYear()} A systematic development for portfolio uses
       </p>
