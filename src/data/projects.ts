@@ -5,7 +5,7 @@ import zelvariaShot from "../assets/projects/zelvaria.png";
 
 export interface Project {
   title: string;
-  url: string;
+  url?: string;
   category: string;
   description: string;
   tags: string[];
@@ -20,7 +20,6 @@ export interface FeaturedProject extends Project {
 
 export const featuredProject: FeaturedProject = {
   title: "Zelvaria",
-  url: "https://zelvaria.world/",
   category: "Full-Stack MMORPG Community Platform",
   description:
     "Zelvaria combines an immersive public-facing web experience with the systems that run a real community behind it: a database-backed application, payment processing, and integrations with Discord, VPS infrastructure, and game-host services.",

@@ -66,14 +66,16 @@ export default function ProjectsPage() {
               ))}
             </ul>
             <Tags tags={featuredProject.integrations} />
-            <a
-              href={featuredProject.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
-            >
-              Visit site
-            </a>
+            {featuredProject.url && (
+              <a
+                href={featuredProject.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link"
+              >
+                Visit site
+              </a>
+            )}
           </div>
         </section>
       )}
@@ -94,14 +96,16 @@ export default function ProjectsPage() {
               <h3 className="project-title">{project.title}</h3>
               <p className="project-text">{project.description}</p>
               <Tags tags={project.tags} />
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="project-link"
-              >
-                Visit site
-              </a>
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  Visit site
+                </a>
+              )}
             </div>
           </article>
         ))}
