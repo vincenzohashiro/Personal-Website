@@ -88,3 +88,66 @@ export const projects: Project[] = [
     tags: ["Website", "E-Commerce"],
   },
 ];
+
+export interface Capability {
+  title: string;
+  description: string;
+  tools: string[];
+}
+
+export const automationCapabilities: Capability[] = [
+  {
+    title: "Workflow Automation",
+    description: "Automating forms, notifications, scheduling, follow-ups, and data sync so manual steps disappear.",
+    tools: ["Make.com", "Zapier", "Monday.com"],
+  },
+  {
+    title: "AI Agents & LLM Integration",
+    description: "Agents that use tools to research, analyze, score, and act on data instead of just chatting.",
+    tools: ["Claude API", "Tool Use", "Prompt Design"],
+  },
+  {
+    title: "API Integrations",
+    description: "Connecting business tools through REST APIs and webhooks so data flows without copy-paste.",
+    tools: ["REST APIs", "Webhooks", "Google Places API"],
+  },
+  {
+    title: "CRM Systems",
+    description: "Lead and customer pipelines with statuses, tasks, activity tracking, and automated lead handling.",
+    tools: ["Monday.com", "Supabase", "PostgreSQL"],
+  },
+  {
+    title: "Dashboards & Reporting",
+    description: "Pulling CRM and ad-platform data into one view of the funnel, revenue, and KPIs.",
+    tools: ["Monday.com", "Meta Ads", "Google Ads"],
+  },
+  {
+    title: "Troubleshooting & Documentation",
+    description: "Debugging broken workflows and writing SOPs so the team can run and maintain them.",
+    tools: ["SOPs", "Process Optimization"],
+  },
+];
+
+export const automationProjects: Project[] = [
+  {
+    title: "AI Lead Discovery Agent",
+    category: "AI Agent · Claude API",
+    description:
+      "An AI agent built on Claude's tool-use API that runs lead-discovery missions on its own: it searches businesses city by city through Google Places, analyzes each website's quality, skips duplicates, scores every lead as Hot, Warm, or Nurture, and saves the qualified ones. A Next.js dashboard configures the market, cities, and daily target and streams the agent's progress live.",
+    tags: ["AI Agent", "Claude API", "Tool Use", "Next.js", "Google Places API", "Upstash Redis"],
+  },
+  {
+    title: "Automated Prospect Finder",
+    category: "Scheduled Automation · Lead Pipeline",
+    description:
+      "A weekly GitHub Actions job that discovers businesses through the Google Places API, inspects each one's website (respecting robots.txt), scores it on a 15-point rubric, and delivers qualified leads into a Supabase CRM with per-criterion evidence and a draft outreach line, deduplicated automatically.",
+    tags: ["Automation", "GitHub Actions", "Google Places API", "Supabase", "CRM"],
+  },
+  {
+    title: "CRM & Operations Workflows",
+    category: "Make.com · Zapier · Monday.com",
+    description:
+      "Client workflow automations connecting forms, notifications, scheduling systems, and CRM pipelines, including automated lead handling for Håreksperten, with SOP documentation so teams could run them day to day.",
+    tags: ["Make.com", "Zapier", "Monday.com", "CRM", "SOPs"],
+  },
+];

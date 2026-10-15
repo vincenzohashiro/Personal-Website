@@ -23,27 +23,28 @@ export default function BasicCard() {
   // Your existing work experiences array
   const workExperiences = [
     {
-      title: "Freelance Web and App Development (09/22 - 11/24) Philippines",
+      title: "Freelance Automation & Full-Stack Developer (Q2 2025 - Present)",
       details: [
-        "Developed and maintained various web applications",
-        "Collaborated with clients to meet project requirements",
-        "Utilized modern web technologies for efficient solutions",
+        "Built workflow automations with Make.com, Zapier, and Monday.com to streamline operations",
+        "Integrated forms, notifications, scheduling systems, and CRM pipelines through APIs",
+        "Built an AI lead discovery agent using the Claude API with tool use",
+        "Developed and deployed business websites, booking systems, and dashboards for clients",
+        "Wrote SOPs and workflow documentation for onboarding and consistency",
       ],
     },
     {
-      title: "Junior Frontend Developer (01/21 - 08/22) TechCorp",
+      title: "Affiliate Marketing & Client Relations (Q1 2024 - Q3 2024)",
       details: [
-        "Built reusable React components",
-        "Optimized UI for mobile and desktop",
-        "Worked with UX designers to improve usability",
+        "Managed communication and relationships with international customers",
+        "Consistently exceeded sales targets while improving retention",
       ],
     },
     {
-      title: "Intern - Software Development (06/20 - 12/20) Startup Inc.",
+      title: "Virtual Assistant - Web Development & Operations (Q3 2023 - Q1 2024)",
       details: [
-        "Assisted in developing backend APIs",
-        "Wrote documentation for project setup",
-        "Fixed minor bugs and improved code quality",
+        "Supported operations through workflow coordination and documentation",
+        "Handled CMS updates, content organization, and digital assets",
+        "Developed SOPs to improve onboarding and internal processes",
       ],
     },
   ];
@@ -369,7 +370,12 @@ export default function BasicCard() {
                   {
                     title: "Automation Specialist",
                     content:
-                      "Created a CRM system using Zapier and Monday to streamline client management and follow-ups.",
+                      "Built CRM and operations workflows with Make.com, Zapier, and Monday.com, including automated lead handling and follow-ups.",
+                  },
+                  {
+                    title: "AI Agents & Integrations",
+                    content:
+                      "Built an AI lead discovery agent on the Claude API that searches, analyzes, scores, and saves leads using tools and external APIs.",
                   },
                   {
                     title: "English Proficiency",
@@ -442,11 +448,14 @@ export default function BasicCard() {
     <div className="container mt-5">
       <div className="profile-card">
         <h2 className="profile-name">Vincent Mangalili</h2>
-        <p className="profile-title">Frontend Developer</p>
+        <p className="profile-title">Automation &amp; AI Specialist · Full-Stack Developer</p>
         <p className="profile-description">
-          I am committed to providing my expertise and knowledge, continuously
-          studying and staying upto-date with the latest advancements in my
-          field to ensure that all work is performed at the highest standard.
+          I build workflow automations with Make.com, Zapier, and Monday.com,
+          along with API integrations, CRM systems, AI agents, and full-stack
+          web applications. I've worked on real client projects involving
+          automation, system integrations, troubleshooting, and documentation,
+          and I'm comfortable learning new tools and building solutions
+          tailored to how a business runs.
           <br />
           <br />
           <a
